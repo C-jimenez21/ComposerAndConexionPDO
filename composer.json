@@ -1,0 +1,20 @@
+{
+    "name": "apolt01-022/composer-and-conexion-pdo",
+    "autoload": {
+        "psr-4": {
+            "App\\":[ 
+                "./scripts",
+                "./scripts/db"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "C-jimenez21",
+            "email": "cristianjjc21@gmail.com"
+        }
+    ],
+    "require": {
+        "bramus/router": "~1.6"
+    }
+}
