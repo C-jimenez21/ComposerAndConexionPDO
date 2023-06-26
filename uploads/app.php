@@ -56,13 +56,13 @@
     $router->put("/tabla1", function(){
         $_DATA = json_decode(file_get_contents("php://input"), true);
         $cox = new \App\connect();
-        $res = $cox->con->prepare("UPDATE academic_area SET  id_area =:ID_AREA, id_staff =:ID_STAFF, id_position =:ID_POSITION, id_journey =:ID_JOURNEY WHERE id =:id");
-        $res->bindValue("ID_AREA", $_DATA['id_area']); 
-        $res->bindValue("ID_STAFF", $_DATA['id_staff']); 
-        $res->bindValue("ID_POSITION", $_DATA['id_position']); 
-        $res->bindValue("ID_JOURNEY", $_DATA['id_journey']); 
-        $res->bindValue("id", $_DATA['id']);
-        $res->execute();
+        $res = $cox->con->prepare("UPDATE academic_area SET id_area=:ID_AREA, id_staff=:ID_STAFF, id_position=:ID_POSITION, id_journey=:ID_JOURNEY WHERE id =:CEDULA");
+        $res-> bindValue("CEDULA", $_DATA["id"]);
+        $res-> bindValue("ID_AREA", $_DATA["id_area"]); 
+        $res-> bindValue("ID_STAFF", $_DATA["id_staff"]); 
+        $res-> bindValue("ID_POSITION", $_DATA["id_position"]); 
+        $res-> bindValue("ID_JOURNEY", $_DATA["id_journey"]); 
+        $res -> execute();
         $res = $res->rowCount();
         echo json_encode($res);
     });
@@ -93,5 +93,4 @@
     });
 
     $router->run();
-  
 ?>
