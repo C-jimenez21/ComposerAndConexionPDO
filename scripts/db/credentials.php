@@ -7,7 +7,7 @@
         protected $username = "sputnik";
         private $password = "Sp3tn1kC@";
         function __construct(){
-            echo "credenciales";
+           // echo "credenciales";
         }
     }
 

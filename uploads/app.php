@@ -7,7 +7,6 @@
         $res = $cox->con->prepare("SELECT * FROM tb_camper");
         $res -> execute();
         $res = $res->fetchAll(\PDO::FETCH_ASSOC);
-        print_r($res); // retorna la consulta como un array asociativo 
         echo json_encode($res);
     });
 
@@ -26,7 +25,7 @@
         $_DATA = json_decode(file_get_contents("php://input"), true);
         $cox = new \App\connect();
         $res = $cox->con->prepare("DELETE FROM tb_camper WHERE id =:CEDULA");
-        $res->bindValue("ID", $_DATA["id"]);
+        $res->bindValue("CEDULA", $_DATA["id"]);
         $res->execute();
         $res = $res->rowCount();
         echo json_encode($res);
@@ -35,9 +34,9 @@
     $router->post("/camper", function(){
         $_DATA = json_decode(file_get_contents("php://input"), true);
         $cox = new \App\connect();
-        $res = $cox->con->prepare("INSERT INTO tb_camper (nombre, edad) VALUES (:NOMBRE, :CEDULA");
-        $res-> bindValue("NOMBRE", $_DATA['nom']); //para editar se debe escribir la sentencia dentro del $_DATA["nom"] es decir { nom: Wilfer, id: 1}
-        $res-> bindValue("CEDULA", $_DATA['id']);
+        $res = $cox->con->prepare("INSERT INTO tb_camper (nombre, edad) VALUES (:NOMBRE, :EDAD)");
+        $res-> bindValue("NOMBRE", $_DATA['nombre']); //para editar se debe escribir la sentencia dentro del $_DATA["nom"] es decir { nom: Wilfer, id: 1}
+        $res-> bindValue("EDAD", $_DATA['edad']);
         $res -> execute();
         $res = $res->rowCount();
         echo json_encode($res);
